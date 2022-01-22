@@ -1255,7 +1255,26 @@ slider();
     "https://smtpjs.com/v3/smtp.js">
   </script>
 <script>
-  
+   var lat; var long;
+  function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    lat=0;
+  }
+}
+
+function showPosition(position) {
+  console.log(position)
+  // x.innerHTML = "Latitude: " + position.coords.latitude + 
+  // "<br>Longitude: " + position.coords.longitude;
+  lat=position.coords.latitude;
+   long=position.coords.longitude;
+   
+}
+getLocation();
+
+console.log(lat);
   
   var alanBtnInstance = alanBtn({
     key: "2caec3b618718763b4fa88064b6364232e956eca572e1d8b807a3e2338fdd0dc/stage",
@@ -1280,7 +1299,7 @@ slider();
         To: 'mandavasathvik6@gmail.com,20bec024@iiitdwd.ac.in',
         From: "sathvik26122002@gmail.com",
         Subject: "Emergency for our customer",
-        Body: "Eshwar ashish, location: 16.518841979800495, 80.66519789863592 is on emergency hurry up to save him",
+        Body: `'latitude: ${lat}  longitude:${long} is on emergency'`,
       })
         
     
